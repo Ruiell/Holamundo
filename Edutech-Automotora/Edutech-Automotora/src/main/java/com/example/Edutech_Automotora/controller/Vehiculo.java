@@ -1,15 +1,18 @@
-package com.example.Edutech_Automotora.models.entities;
+package com.example.Edutech_Automotora.controller;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "vehiculos")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vehiculo {
@@ -37,10 +40,10 @@ public class Vehiculo {
     private Integer kilometraje;
     
     @Column(nullable = false)
-    private String tipoCombustible; // Gasolina, Diesel, Electrico, Hibrido
+    private String tipoCombustible;
     
     @Column(nullable = false)
-    private String transmision; // Manual, Automatica
+    private String transmision;
     
     @Column(nullable = false)
     private Integer puertas;
@@ -51,17 +54,9 @@ public class Vehiculo {
     @Column(length = 1000)
     private String descripcion;
     
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String placa;
     
     @Column(name = "fecha_ingreso")
     private LocalDateTime fechaIngreso = LocalDateTime.now();
-    
-    @Column(name = "ultima_actualizacion")
-    private LocalDateTime ultimaActualizacion = LocalDateTime.now();
-
-    public void setPrecio(Integer anio2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPrecio'");
-    }
 }
